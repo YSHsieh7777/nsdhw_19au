@@ -3,7 +3,7 @@ CXX = g++
 CXXFLAGS = -std=c++11 -Wall -lSDL2 -lSDL2_image
 
 EXEC = simulation
-OBJ = main.o person.o
+OBJ = main.o person.o window_map.o
 all: $(EXEC)
 
 $(EXEC): $(OBJ)

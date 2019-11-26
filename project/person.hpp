@@ -8,24 +8,19 @@
 typedef std::pair<float, float> pos_t; 
 typedef std::pair<float, float> vel_t; 
 
-const int SCREEN_WIDTH = 590;
-const int SCREEN_HEIGHT = 590;
-
-extern SDL_Renderer* gRenderer;
-extern SDL_Window* gWindow;
-
 class Person
 {
 public:
 	Person(float x, float y , float r);
+	~Person() = default;
 
 	//Moves the Person and checks collision
-	void move();
+	void move(const uint16_t , const uint16_t );
 
-	void setColor();
+	void setColor(SDL_Renderer* );
 
 	//Shows the Person on the screen
-	void render();
+	void render(SDL_Renderer* );
 
 private:
 	pos_t m_position;

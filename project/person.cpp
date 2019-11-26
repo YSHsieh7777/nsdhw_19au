@@ -15,7 +15,7 @@ Person::Person(float x, float y , float r)
     m_dead = false;  
 }
 
-void Person::move()
+void Person::move(const uint16_t SCREEN_WIDTH, const uint16_t SCREEN_HEIGHT)
 {
     //Move the Person left or right
     m_position.first += m_moving_direction.first;
@@ -37,14 +37,14 @@ void Person::move()
     }
 }
 
-void Person::setColor()
+void Person::setColor(SDL_Renderer* gRenderer)
 {
     SDL_SetRenderDrawColor(gRenderer, panic_to_red[m_panic_degree], panic_to_green[m_panic_degree], panic_to_blue[m_panic_degree], 0xFF);
 }
 
-void Person::render()
+void Person::render(SDL_Renderer* gRenderer)
 {
-    Person::setColor();
+    Person::setColor(gRenderer);
 
     const float diameter = (m_radius * 2);
 
