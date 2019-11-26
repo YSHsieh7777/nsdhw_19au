@@ -141,7 +141,14 @@ const std::vector<SDL_Rect> & WindowMap::walls() const
 void WindowMap::init_people()
 {
 	Person p1(100, 100, 7.5);
-	people.push_back(p1);
+	lu_people.push_back(p1);
+}
+
+void WindowMap::update_people()
+{
+	lu_people[0].x_speed() = rand() / (RAND_MAX + 1.0) - 0.5;
+	lu_people[0].x_speed() = rand() / (RAND_MAX + 1.0) - 0.5;
+	lu_people[0].move();
 }
 
 void WindowMap::update_screen()
@@ -157,8 +164,9 @@ void WindowMap::update_screen()
 		SDL_RenderDrawRect( gRenderer, &m_walls[i] );
 	}						
 
+	update_people();
 	//Render person
-	people[0].render(gRenderer);
+	lu_people[0].render(gRenderer);
 
 	//Update screen
 	SDL_RenderPresent( gRenderer );

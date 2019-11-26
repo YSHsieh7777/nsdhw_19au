@@ -4,9 +4,7 @@
 #include <SDL2/SDL_image.h>
 #include <map>
 #include <vector>
-
-typedef std::pair<float, float> pos_t; 
-typedef std::pair<float, float> vel_t; 
+#include <stdlib.h>
 
 class Person
 {
@@ -14,8 +12,17 @@ public:
 	Person(float x, float y , float r);
 	~Person() = default;
 
-	//Moves the Person and checks collision
-	void move(const uint16_t , const uint16_t );
+	const float & x() const;
+    float & x();
+    const float & y() const;
+    float & y();
+	const float & x_speed() const;
+    float & x_speed();
+    const float & y_speed() const;
+    float & y_speed();
+
+	void update_speed();
+	void move();
 
 	void setColor(SDL_Renderer* );
 
@@ -23,9 +30,9 @@ public:
 	void render(SDL_Renderer* );
 
 private:
-	pos_t m_position;
+	float m_x, m_y;
 	float m_radius;
-	vel_t m_moving_direction;
+	float m_x_speed, m_y_speed;
 
 	uint8_t m_panic_degree;
 	float m_moving_distance_last_few_seconds;  // A factor that affects panic_degree.
