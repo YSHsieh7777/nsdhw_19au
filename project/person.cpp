@@ -11,10 +11,13 @@ Person::Person(float x, float y , float r)
 	m_radius = r;
 	m_x_speed = rand() / (RAND_MAX + 1.0) - 0.5;
     m_y_speed = rand() / (RAND_MAX + 1.0) - 0.5;
+    m_x_next_speed = m_y_speed;
+    m_y_next_speed = m_y_speed;
 
     m_panic_degree = 0;
 	m_moving_distance_last_few_seconds = 0;  // A factor that affects panic_degree.
     m_dead = false;  
+    m_pass_door = false;
 }
 
 const float & Person::x() const { return m_x; }
@@ -25,6 +28,12 @@ const float & Person::x_speed() const { return m_x_speed; }
 float & Person::x_speed() { return m_x_speed; }
 const float & Person::y_speed() const { return m_y_speed; }
 float & Person::y_speed() { return m_y_speed; }
+const float & Person::x_next_speed() const { return m_x_next_speed; }
+float & Person::x_next_speed() { return m_x_next_speed; }
+const float & Person::y_next_speed() const { return m_y_next_speed; }
+float & Person::y_next_speed() { return m_y_next_speed; }
+const bool & Person::pass_door() const { return m_pass_door; }
+bool & Person::pass_door() { return m_pass_door; }
 
 void Person::move()
 {

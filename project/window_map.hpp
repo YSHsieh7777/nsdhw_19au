@@ -4,6 +4,8 @@
 #include <stdint.h>
 #include <string>
 #include <vector>
+#include <cmath>
+#include <iostream>
 
 #include "person.hpp"
 
@@ -17,8 +19,14 @@ public:
     const std::vector<SDL_Rect> & walls() const;
     void init_people();
 
+    void update_lu_people_speed();
+    void check_lu_walls_collision();
+    void check_lu_person_collision(size_t );
+    void check_lu_people_collision();
+    void update_lu_people();
     void update_people();
     void update_screen();
+    void rander_people();
 
 private:
     SDL_Renderer* gRenderer;
